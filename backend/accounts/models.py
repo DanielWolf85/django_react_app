@@ -30,3 +30,15 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
 
     objects = UserAccountManager()
+
+    USERNAME_FIELD = email
+    REQUIRED_FIELDS = ['name']
+
+    def get_full_name(self):
+        return self.name
+    
+    def get_short_name(self):
+        return self.name
+    
+    def __str__(self):
+        return self.email
