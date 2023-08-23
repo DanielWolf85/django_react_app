@@ -26,5 +26,6 @@ class SignupView(APIView):
                     user = User.objects.create_user(email=email, password=password, name=name)
                     
                     user.save()
+                    return Response({'success': 'Пользователь успешно добавлен'})
         else:
             return Response({'error': 'Пароли не совпадают'})
